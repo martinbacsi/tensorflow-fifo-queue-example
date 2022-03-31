@@ -2,7 +2,7 @@ import threading
 import time
 
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def load_data():
@@ -19,7 +19,7 @@ class DataGenerator(object):
         # Change the shape of the input data here with the parameter shapes.
         self.wait_time = wait_time
         self.max_queue_size = max_queue_size
-        self.queue = tf.PaddingFIFOQueue(max_queue_size, ['float32'], shapes=[(None, None)])
+        self.queue = tf.queue.PaddingFIFOQueue(max_queue_size, ['float32'], shapes=[(None, None)])
         self.queue_size = self.queue.size()
         self.threads = []
         self.coord = coord

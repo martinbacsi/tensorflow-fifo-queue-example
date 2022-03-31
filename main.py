@@ -2,7 +2,8 @@ from __future__ import print_function
 
 import time
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+
 
 from data import DataGenerator
 
@@ -12,7 +13,8 @@ def define_net(input_batch):
 
 
 def main():
-    batch_size = 1
+    tf.compat.v1.disable_eager_execution()
+    batch_size = 4
 
     coord = tf.train.Coordinator()
     with tf.name_scope('create_inputs'):
